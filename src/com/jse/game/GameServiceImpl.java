@@ -15,8 +15,7 @@ public class GameServiceImpl implements GameService {
 	}
 
 	public int calculate() {
-		int num3 = cal.getNum1() + cal.getNum2();
-		return num3;
+		return cal.getNum1() + cal.getNum2();
 	}
 
 	public String comval() {

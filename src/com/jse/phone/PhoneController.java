@@ -7,7 +7,6 @@ public class PhoneController {
 	public static void main(String[] args) {
 		PhoneServiceImpl phones = new PhoneServiceImpl();
 		Phone phone = null;
-		String message = "";
 		while (true) {
 			switch (JOptionPane.showInputDialog(Constants.MENU)) {
 			case "0":

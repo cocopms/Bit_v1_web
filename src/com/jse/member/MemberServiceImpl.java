@@ -61,8 +61,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	public void add(Member member) {
-		System.out.println();
-		System.out.println();
 		
 	}
 }
