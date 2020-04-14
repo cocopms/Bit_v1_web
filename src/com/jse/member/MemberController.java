@@ -27,7 +27,7 @@ public class MemberController {
 				break;
 			case "3" : 
 				value = JOptionPane.showInputDialog(Constants.MEMBER_GENDER);
-				members.setUnique(value);
+				members.setSsn(value);
 				JOptionPane.showMessageDialog(null, service.gender());
 				break;
 			case "4" : 

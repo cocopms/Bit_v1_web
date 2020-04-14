@@ -20,7 +20,7 @@ public class GradeServiceImpl implements GradeService {
 	}
 
 	@Override
-	public void add(Grade grade) {
+	public void add(Grade grade) { //서비스로부터 받은 값
 		grades[count] = grade;
 		count++;
 	}

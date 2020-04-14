@@ -7,4 +7,5 @@ public interface MemberService {
 	public String gender();
 	public String kaupcal();
 	public void add(Member member);
+	public Member login(Member member);
 }

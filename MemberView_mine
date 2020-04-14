@@ -34,7 +34,7 @@ public class JoinView extends JFrame implements ActionListener { // Frame을 ext
 		String[] names = { "이름", "아이디", "비밀번호", "주민번호", "주소" }; // 예외처리, "내용" : notation
 		for (int i = 0; i < names.length; i++) {// 5줄을 한줄로 바꾸자..
 			labels[i] = new JLabel(names[i]);
-			panel.add((labels[i]));
+			panel.add(labels[i]);
 			fields[i] = new JTextField();
 			panel.add(fields[i]);
 		}
@@ -79,10 +79,10 @@ public class JoinView extends JFrame implements ActionListener { // Frame을 ext
 			fields[3].setText("900101-1,960101-2,980101-1,011010-4,020606-3");
 			fields[4].setText("서울,서울,서울,부산,부산");
 			String data = String.format("%s / %s / %s / %s /%s", fields[0].getText(), fields[1].getText(),
-					fields[2].getText(), // 클릭 : notation(기호와 리터럴의 조합)\r\n
+					fields[2].getText(), // 클릭 : notation(기호와 리터럴의 조합)\r\n, 전처리(nlp) 시작
 					fields[3].getText(), fields[4].getText()); // text인가 string이 아니고?? .도 받아야 하니까..)
 
-			String[] arr = data.split("/");// 각 스플릿을 통해 담는다 = 전처리
+			String[] arr = data.split("/");// 각 스플릿을 통해 담는다 : 차원을 쌓는다
 			Member[] members = new Member[5];
 			String[] names = arr[0].split(",");
 			String[] userids = arr[1].split(",");
