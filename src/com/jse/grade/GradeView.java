@@ -124,6 +124,8 @@ public class GradeView extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		int i = 0;
+
 		if (e.getSource() == submitButton) {
 			JOptionPane.showMessageDialog(this, "전송");
 			nameText.setText("홍길동,유관순,이순신,신사임당,이도"); // 자연어
@@ -137,31 +139,29 @@ public class GradeView extends JFrame implements ActionListener {
 			String[] english = englishText.getText().split(",");
 			String[] math = mathText.getText().split(",");
 			String[] java = javaText.getText().split(",");
-			int i;
-			for (i = 0; i < 5; ++i) {
+			for (; i < 5; ++i) {
 				grades[i] = new Grade(); // 차원을 높인다, grade 공간인데 배열이니까...
 				grades[i].setName(names[i]);
 				grades[i].setKorean(Integer.parseInt(korean[i])); // 형변환은 split 후에 해주어야 .(점) 오류가 없다
 				grades[i].setEnglish(Integer.parseInt(english[i]));
 				grades[i].setMath(Integer.parseInt(math[i]));
 				grades[i].setJava(Integer.parseInt(java[i]));
-				service.add(grades[i]); //전송
+				service.add(grades[i]); // 전송
 			}
 		} else if (e.getSource() == listButton) {
 			JOptionPane.showMessageDialog(this, "리스트");
-			Grade[] graderesult = service.getGrades(); //가져오기
-			
-			String result = ""; //여기부터 몰랐음
-			int i;
-			for(i=0; i<graderesult.length; ++i) {
-				result += graderesult[i]+"\n";
+			Grade[] graderesult = service.list(); // 가져오기
+
+			String result = ""; // 여기부터 몰랐음
+			for (; i < graderesult.length; ++i) {
+				result += graderesult[i] + "\n";
 			}
-			nameText.setText(""); //null
+			nameText.setText(""); // null
 			koreanText.setText("");
 			englishText.setText("");
 			mathText.setText("");
 			javaText.setText("");
-			resultText.setText(result); //Text니까 String type 맞춰주기
+			resultText.setText(result); // Text니까 String type 맞춰주기
 		}
 
 	}

@@ -12,11 +12,13 @@ public class CardController {
 			case "0":
 				return;
 			case "1":
-				cards = new Card();
+				
 				for (int i = 0; i < 3; ++i) {
+					cards = new Card();
 					String[] value = JOptionPane.showInputDialog(Constants.CARD_INPUT).split(",");
 					cards.setKind(value[0]);
 					cards.setNumber(Integer.parseInt(value[1]));
+					service.add(cards);
 				}
 				break;
 			case "2":

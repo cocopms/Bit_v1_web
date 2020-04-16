@@ -10,34 +10,31 @@ public class GradeServiceImpl implements GradeService {
 	}
 
 	@Override
-	public void setGrades(Grade[] grades) {
-		this.grades = grades;
-	}
-
-	@Override
-	public Grade[] getGrades() {
-		return grades;
-	}
-
-	@Override
-	public void add(Grade grade) { //서비스로부터 받은 값
+	public void add(Grade grade) { // 서비스로부터 받은 값
 		grades[count] = grade;
 		count++;
 	}
 
 	@Override
-	public void setCount(int count) {
-		this.count = count;
+	public Grade[] list() {
+		// TODO Auto-generated method stub
+		return grades;
 	}
 
 	@Override
-	public int getCount() {
+	public Grade detail(Grade grade) {
+		// TODO Auto-generated method stub
+		return grade;
+	}
+
+	@Override
+	public int count() {
 		return count;
-		
+
 	}
 
 	@Override
-	public int total(Grade grade) { 
+	public int total(Grade grade) {
 		return grade.getKorean() + grade.getEnglish() + grade.getMath();
 	}
 
@@ -50,8 +47,9 @@ public class GradeServiceImpl implements GradeService {
 	public String record(Grade grade) {
 		String result = "";
 		int average = average(grade);
-		switch(result) { 
-		case "A":  break;
+		switch (result) {
+		case "A":
+			break;
 		}
 		if (average >= 90) {
 			result = "A";
@@ -73,28 +71,42 @@ public class GradeServiceImpl implements GradeService {
 
 	@Override
 	public String printGrade() {
-		Grade[] grades = getGrades();
+		Grade[] grades = list();
 		String result = "";
 		for (int i = 0; i < 3; i++) {
-			result += String.format("이름 : %s, 총점 : %d 점, 평균 : %d 점, 학점 : %s \n", grades[i].getName(),
-					total(grades[i]), average(grades[i]), record(grades[i]));
+			result += String.format("이름 : %s, 총점 : %d 점, 평균 : %d 점, 학점 : %s \n",
+					grades[i].getName(), total(grades[i]),average(grades[i]), record(grades[i]));
 		}
 		return result;
 	}
 
 	@Override
 	public String ranking() {
-		grades = getGrades();
+		grades = list();
 		int a = total(grades[0]);
 		int b = total(grades[1]);
 		int c = total(grades[2]);
 		String rank = "";
-		rank = (a>b && b>c) ? "1등 : a, 2등 : b, 3등 : c" : "false";
-		rank = (a>c && c>b) ? "1등 : a, 2등 : c, 3등 : b" : "false";
-		rank = (b>a && a>c) ? "1등 : b, 2등 : a, 3등 : c" : "false";
-		rank = (a>c && c>a) ? "1등 : b, 2등 : c, 3등 : a" : "false";
-		rank = (c>a && a>c) ? "1등 : c, 2등 : a, 3등 : b" : "false";
-		rank = (c>b && b>a) ? "1등 : c, 2등 : b, 3등 : a" : "false";
+		rank = (a > b && b > c) ? "1등 : a, 2등 : b, 3등 : c" : "false";
+		rank = (a > c && c > b) ? "1등 : a, 2등 : c, 3등 : b" : "false";
+		rank = (b > a && a > c) ? "1등 : b, 2등 : a, 3등 : c" : "false";
+		rank = (a > c && c > a) ? "1등 : b, 2등 : c, 3등 : a" : "false";
+		rank = (c > a && a > c) ? "1등 : c, 2등 : a, 3등 : b" : "false";
+		rank = (c > b && b > a) ? "1등 : c, 2등 : b, 3등 : a" : "false";
 		return rank;
+	}
+
+
+
+	@Override
+	public void update(Grade grade) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void delete(Grade grade) {
+		// TODO Auto-generated method stub
+
 	}
 }
