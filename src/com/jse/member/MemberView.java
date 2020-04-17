@@ -136,7 +136,6 @@ public class MemberView extends JFrame implements ActionListener {
 			useridText.setText("hong,you,lee,shin,leedo");
 			passwordText.setText("1,1,1,1,1");
 			ssnText.setText("900101-1,960101-2,980101-1,011010-4,020606-3");
-			
 			addrText.setText("서울,서울,서울,부산,부산");// text인가 string이 아니고?? .도 받아야 하니까..)
 			Member[] members = new Member[5]; // 배열 차원이 올라감
 			String[] names = nameText.getText().split(",");// String으로 넘어가는순간 자연어가 자바어가됨, 전처리시작
