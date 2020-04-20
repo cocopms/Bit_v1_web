@@ -8,7 +8,7 @@ public interface MemberService {
 	public void add(Member member);
 	public Member[] list(); //getter과 같은 역할을 하므로 getter과 취합해버림
 	public Member[] searchByName(String name); //read, 검색결과 : all, some(0~manythings), one, int // 100% String
-	public Member[] serarchByGender(String gender);
+	public Member[] searchByGender(String gender);
 	public Member detail(String userid); //조회.. 키값
 
 	public int count(); //getCount 이름을 바꿈

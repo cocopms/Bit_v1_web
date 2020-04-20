@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- 에이작스가 작동하는 url 던져줌 -->
+<style>
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+	background-color: #666;
+	padding: 30px;
+	text-align: center;
+	font-size: 35px;
+	color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+	float: left;
+	width: 30%;
+	height: 300px; /* only for demonstration, should be removed */
+	background: #ccc;
+	padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+article {
+	float: left;
+	padding: 20px;
+	width: 70%;
+	background-color: #f1f1f1;
+	height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Style the footer */
+footer {
+	background-color: #777;
+	padding: 10px;
+	text-align: center;
+	color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media ( max-width : 600px) {
+	nav, article {
+		width: 100%;
+		height: auto;
+	}
+}
+</style>
+</head>
+<body>
+	<h2>홈페이지</h2>
+	<header>
+		<h2>Cities</h2>
+	</header>
+	<section>
+		<nav>
+			<ul>
+				<li><a id="a-join" href="#">Join</a></li>
+				<li><a id="a-login" href="#">Login</a></li>
+				<li><a id="a-cancel" href="#">Cancel</a></li>
+			</ul>
+		</nav>
+		<article>
+			<!-- 로그인자리 -->
+			<form action="#">
+				<label>이름</label><br>
+				<!-- static -->
+				<input id="name" type="text"><br>
+				<!-- 자연어, value="" 생략된 것 -->
+				<label >아이디</label><br>
+				<input id="userid" type="text"><br>
+				<label >비밀번호</label><br>
+				<input id="password" type="text"><br>
+				<label >주민등록번호</label><br>
+				<input id="ssn" type="text"><br>
+				<label >주소</label><br>
+				<input id="addr" type="text"><br>
+				<input id="join-button" type="button" value="회원가입">
+				<input id="cancel-button" type="button" value="취소">
+			</form>
+		</article>
+	</section>
+
+	<footer>
+		<p>Footer</p>
+	</footer>
+	<script type="text/javascript">
+ 		$('#a-join').click(function() { /* 자바에서 new 준것과 같음 */
+			alert('회원가입')
+		})
+		$('#a-login').click(function() {
+			alert('로그인')
+		})
+		$('#a-hmm').click(function() {
+			alert('흐으음')
+		})
+		$('#join-button').click(function(){
+			let member = {name : $('#name').val(), /* 자바의 member 변수와 맞춰야 한다 */
+			userid : $('#userid').val(), /* 앞의 키값은 ''생략, 뒤의 값만 ''준다' */
+			password : $('#password').val(),
+			ssn : $('#ssn').val(),
+			addr : $('#addr').val()}
+			/* 자바언어 독해 */
+			/* 컨트롤러로 프레임워크 보내기 */
+			alert('입력된 주민번호 : ' + member.ssn) /* 빠른대신 보안포기 */
+			$.ajax({ /* 서버로 간다 */
+				url: '/join', /* MemberController과 맞춰줘야 함 */
+				type: 'post', /* 암호화, url mapping */
+				data: JSON.stringify(member), /* ify : ~화하다 - 스트링으로 바꿔서 java로 보내라(핵심) 데이터 맞춰주기 */
+				dataType : 'json', 
+				contentType : 'application/json',
+				success: function(returnName){ //파라미터
+					alert(returnName.name+'님 회원가입 성공') //서버에서 응답이 없을 때 undefineded가 뜸
+				},
+				error: function(){
+					alert('회원가입 실패')
+				}
+			}) /* {}parameter을 java로 보내라 */
+		})
+		$('#cancel-button').click(function() {
+			alert('취소')
+		})
+		
+	</script>
+</body>
+</html>
