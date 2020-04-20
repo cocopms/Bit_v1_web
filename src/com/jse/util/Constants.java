@@ -14,7 +14,7 @@ public class Constants {
 	public final static String CARD_MENU = "[0]종료 [1]카드 3장 받기 [2]카드 출력";
 	public final static String CARD_INPUT = "입력 : 카드모양, 카드숫자";
 
-	public final static String MEMBER_MENU = "[0]종료 [1]회원가입 [2]회원가입출력 [3]성별식별 [4]카우프지력";
+	public final static String MEMBER_MENU = "[0]종료 [1]회원가입 [2]회원가입출력 [3]성별식별 [4]카우프지수력";
 	public final static String MEMBER_JOIN = ":::회원가입::: 입력 : 아이디, 비밀번호, 이름, 나이";
 	public final static String MEMBER_GENDER = "입력 : 주민등록번호(-포함)";
 	public final static String MEMBER_KAUP = "입력 : 체중, 키";

@@ -17,50 +17,6 @@ public class PhoneServiceImpl implements PhoneService {
 		this.result = "";
 	}
 	
-	public CellPhone[] getCellphones() {
-		return cellphones;
-	}
-
-	public void setIphones(Iphone[] iphones) {
-		this.iphones = iphones;
-	}
-
-	public Iphone[] getIphones() {
-		return iphones;
-	}
-
-	public void setCellphones(CellPhone[] cellphones) {
-		this.cellphones = cellphones;
-	}
-
-	public CellPhone[] getCellphone() {
-		return cellphones;
-	}
-
-	public void setPhone(Phone[] phones) {
-		this.phones = phones;
-	}
-
-	public Phone[] getPhone() {
-		return phones;
-	}
-
-	public void setcount(int count) {
-		this.count = count;
-	}
-
-	public GalaxyNote[] getGalaxynotes() {
-		return galaxynotes;
-	}
-
-	public void setGalaxynotes(GalaxyNote[] galaxynotes) {
-		this.galaxynotes = galaxynotes;
-	}
-
-	public int getcount() {
-		return count;
-	}
-
 	public void add(Phone phone) { // 하나씩 받는 것을 추가함 set의 역할을 하지만 set을 붙이면 헷갈려!
 		phones[count] = phone; // 오버로딩 : 이름은 같아도 상관 없다. 파라미터 "타입"만 맞춰주면 된다. 기준은 타입이다
 		count++;
@@ -80,7 +36,108 @@ public class PhoneServiceImpl implements PhoneService {
 		galaxynotes[count] = galaxynote;
 		count++;
 	}
+	
+	@Override
+	public Phone[] list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public Phone detail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	public int count() {
+		return count;
+	}
+	
+	@Override
+	public CellPhone[] list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CellPhone detail() {
+		return null;
+	}
+	
+	@Override
+	public Iphone[] list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iphone detail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public GalaxyNote[] list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GalaxyNote detail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+	@Override
+	public void update(Phone phone) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(cellPhone cellphone) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Iphone iphone) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(GalaxyNote galaxynote) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Phone phone) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(cellPhone cellphone) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Iphone iphone) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(GalaxyNote galaxynote) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public String printphone() {
 		for (int i = 0; i < 3; ++i) {
 			result += String.format("번호 : %s, 이름 : %s, 회사 : %s \n", phones[i].getPhonenumber(), phones[i].getName(), phones[i].getCompany());
@@ -98,15 +155,16 @@ public class PhoneServiceImpl implements PhoneService {
 
 	public String printiphone() {
 		for (int i = 0; i < 3; ++i) {
-			result += String.format("번호 : %s, 이름 : %s, 회사 : %s, 검색어 \n", phones[i].getPhonenumber(), phones[i].getName(), phones[i].getCompany(), phones.getSearch);
+			result += String.format("번호 : %s, 이름 : %s, 회사 : %s, 검색어 \n", phones[i].getPhonenumber(), phones[i].getName(), phones[i].getCompany(), phones.getSearch());
 		}
 		return result;
 	}
 	
 	public String printgalaxy() {
 		for (int i = 0; i < 3; ++i) {
-			result += galaxy[i].toString()+"\n";
+			result += galaxynotes[i].toString()+"\n";
 		}
 		return result;
 	}
+
 }

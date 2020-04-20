@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10822f60-3c40-4e9f-bc2c-3dced7f9f2f8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/com/jse/grade/GradeViewMain.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/com/jse/member/MemberServiceImpls.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/com/jse/member/MemberViewMain.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/src/main/java/com/cocopm/web/CocopmApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/src/main/java/com/cocopm/web/ServletInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocopm/src/test/java/com/cocopm/web/CocopmApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jse/grade/GradeViewMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jse/member/MemberServiceImpls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/card/CardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/card/CardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/card/CardService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/card/CardService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/card/CardServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/card/CardServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/game/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/game/GameService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/game/GameServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/game/GameServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/grade/GradeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/grade/GradeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/grade/GradeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/grade/GradeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/grade/GradeView.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/grade/GradeView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/member/LoginView.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/member/LoginView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/member/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/member/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/member/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/member/MemberService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/member/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/member/MemberServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/member/MemberSwing.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/member/MemberSwing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/member/MemberView.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/member/MemberView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/member/MemberView_last.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/member/MemberView_last.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/member/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/member/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/phone/Phone.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/phone/Phone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/phone/PhoneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/phone/PhoneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/phone/PhoneService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/phone/PhoneService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/jse/phone/PhoneServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/jse/phone/PhoneServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/card/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/card/CardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/card/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/card/CardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/card/CardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/card/CardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/game/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/game/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/game/GameServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/game/GameServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/grade/GradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/grade/GradeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/grade/GradeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/grade/GradeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/grade/GradeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/grade/GradeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/member/LoginView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/member/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/member/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/member/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/member/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/member/MemberServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/member/MemberSwing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/member/MemberView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/member/MemberView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/member/MemberView_last.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/member/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/member/MemberViewMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/phone/Phone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/phone/Phone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/phone/PhoneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/phone/PhoneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/phone/PhoneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/phone/PhoneService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jse/phone/PhoneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jse/phone/PhoneServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1afGPidbfUYhltbeIrJeQCpVuJ9" />
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10822f60-3c40-4e9f-bc2c-3dced7f9f2f8" name="Default Changelist" comment="" />
+      <created>1587119212480</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587119212480</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -14,6 +14,40 @@ public class GameServiceImpl implements GameService {
 		game = new Game();
 	}
 
+	@Override
+	public void add(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Game[] list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Game detail(Game game) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void update(Game game) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void delete(Game game) {
+		// TODO Auto-generated method stub
+	}
+
 	public int calculate() {
 		return cal.getNum1() + cal.getNum2();
 	}
@@ -62,4 +96,7 @@ public String diceresult() {
 		}
 		return sum;
 	}
+
+
+
 }

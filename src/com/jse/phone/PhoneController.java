@@ -5,7 +5,7 @@ import com.jse.util.Constants;
 
 public class PhoneController {
 	public static void main(String[] args) {
-		PhoneServiceImpl phones = new PhoneServiceImpl();
+		PhoneServiceImpl service = new PhoneServiceImpl();
 		Phone phone = null;
 		while (true) {
 			switch (JOptionPane.showInputDialog(Constants.MENU)) {
@@ -18,9 +18,10 @@ public class PhoneController {
 					phone.setPhonenumber(values[0]);
 					phone.setName(values[1]);
 					phone.setCompany(values[2]);
+					service.add(phone);
 				} break;
 			case "2":
-			JOptionPane.showMessageDialog(null, phones.printphone()); break;
+			JOptionPane.showMessageDialog(null, service.printphone()); break;
 			case "3":
 				
 				for (int i = 0; i < 3; ++i) {
@@ -29,9 +30,10 @@ public class PhoneController {
 					phone.setName(values[1]);
 					phone.setCompany(values[2]);
 					phone.setPortable(true);
+					service.add(phone);
 				} break;
 			case "4":
-				JOptionPane.showMessageDialog(null, phones.printcell());
+				JOptionPane.showMessageDialog(null, service.printcell());
 				break;
 			case "5":
 				for (int i = 0; i < 3; ++i) {
@@ -41,10 +43,11 @@ public class PhoneController {
 					phone.setCompany(values[2]);
 					phone.setPortable(true);
 					phone.setSearch(values[4]);
+					service.add(phone);
 				}
 				break;
 			case "6":
-					JOptionPane.showMessageDialog(null, phones.printiphone());
+					JOptionPane.showMessageDialog(null, service.printiphone());
 				break;
 			case "7":
 				for (int i = 0; i < 3; ++i) {
@@ -55,10 +58,11 @@ public class PhoneController {
 					phone.setPortable(true);
 					phone.setSearch(values[4]);
 					phone.setBigsize(values[5]);
+					service.add(phone);
 				}
 				break;
 			case "8":
-				JOptionPane.showMessageDialog(null, phones.printgalaxy());
+				JOptionPane.showMessageDialog(null, service.printgalaxy());
 				break;
 			}
 		}

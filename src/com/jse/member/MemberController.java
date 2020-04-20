@@ -13,13 +13,15 @@ public class MemberController {
 			case "0":
 				return;
 			case "1":
-				members = new Member();
+				
 				for (int i = 0; i < 3; ++i) {
+					members = new Member();
 					String[] values = JOptionPane.showInputDialog(Constants.MEMBER_JOIN).split(",");
 					members.setUserid(values[0]);
 					members.setPassword(values[1]);
 					members.setName(values[2]);
 					members.setAge(Integer.parseInt(values[3]));
+					service.add(members);
 				}
 				break;
 			case "2":

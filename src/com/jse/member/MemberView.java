@@ -17,7 +17,8 @@ public class MemberView extends JFrame implements ActionListener {
 	private JLabel title, nameLabel, useridLabel, passwordLabel, ssnLabel, addrLabel;
 	private JTextField nameText, useridText, passwordText, ssnText, addrText;
 	private JTextArea resultText;
-	private JButton submitButton, listButton, loginButton;
+	private JButton submitButton, listButton, loginButton, detailButton, nameButton, genderButton, countButton,
+			updateButton, deleteButton;
 	public MemberService memberService;
 
 	public void open() {
@@ -96,27 +97,68 @@ public class MemberView extends JFrame implements ActionListener {
 		addrText.setLocation(200, 300);
 		container.add(addrText);
 
-		submitButton = new JButton("Submit");
+		submitButton = new JButton("Save");
 		submitButton.setFont(new Font("Arial", Font.PLAIN, 15));
 		submitButton.setSize(100, 20);
-		submitButton.setLocation(150, 450);
-		submitButton.addActionListener(this);
+		submitButton.setLocation(100, 400);
 		submitButton.addActionListener(this);
 		container.add(submitButton);
-
-		loginButton = new JButton("Login");
-		loginButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		loginButton.setSize(100, 20);
-		loginButton.setLocation(390, 450);
-		loginButton.addActionListener(this);
-		container.add(loginButton);
 
 		listButton = new JButton("List");
 		listButton.setFont(new Font("Arial", Font.PLAIN, 15));
 		listButton.setSize(100, 20);
-		listButton.setLocation(270, 450);
+		listButton.setLocation(220, 400);
 		listButton.addActionListener(this);
 		container.add(listButton);
+
+		loginButton = new JButton("Log in");
+		loginButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		loginButton.setSize(100, 20);
+		loginButton.setLocation(340, 400);
+		loginButton.addActionListener(this);
+		container.add(loginButton);
+
+		detailButton = new JButton("Detail");
+		detailButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		detailButton.setSize(100, 20);
+		detailButton.setLocation(100, 440);
+		detailButton.addActionListener(this);
+		container.add(detailButton);
+		
+		nameButton = new JButton("Name");
+		nameButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		nameButton.setSize(100, 20);
+		nameButton.setLocation(220, 440);
+		nameButton.addActionListener(this);
+		container.add(nameButton);
+		
+		genderButton = new JButton("Gender");
+		genderButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		genderButton.setSize(100, 20);
+		genderButton.setLocation(340, 440);
+		genderButton.addActionListener(this);
+		container.add(genderButton);
+		
+		countButton = new JButton("Count");
+		countButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		countButton.setSize(100, 20);
+		countButton.setLocation(100, 480);
+		countButton.addActionListener(this);
+		container.add(countButton);
+		
+		updateButton = new JButton("Update");
+		updateButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		updateButton.setSize(100, 20);
+		updateButton.setLocation(220, 480);
+		updateButton.addActionListener(this);
+		container.add(updateButton);
+		
+		deleteButton = new JButton("Delete");
+		deleteButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		deleteButton.setSize(100, 20);
+		deleteButton.setLocation(340, 480);
+		deleteButton.addActionListener(this);
+		container.add(deleteButton);
 
 		resultText = new JTextArea();
 		resultText.setFont(new Font("맑은고딕", Font.PLAIN, 15));
@@ -129,60 +171,96 @@ public class MemberView extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 
-	@Override // 기능 : controller
+	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == submitButton) {// 주소값 비교
-			nameText.setText("홍길동,유관순,이순신,신사임당,이도");// 자연어
+
+		if (e.getSource() == submitButton) {
+			nameText.setText("홍길동,유관순,이순신,신사임당,이도");
 			useridText.setText("hong,you,lee,shin,leedo");
 			passwordText.setText("1,1,1,1,1");
 			ssnText.setText("900101-1,960101-2,980101-1,011010-4,020606-3");
-			addrText.setText("서울,서울,서울,부산,부산");// text인가 string이 아니고?? .도 받아야 하니까..)
-			Member[] members = new Member[5]; // 배열 차원이 올라감
-			String[] names = nameText.getText().split(",");// String으로 넘어가는순간 자연어가 자바어가됨, 전처리시작
-			String[] userids = useridText.getText().split(",");
-			String[] passwords = passwordText.getText().split(",");
-			String[] ssns = ssnText.getText().split(",");
-			String[] addrs = addrText.getText().split(",");
-			
-			for (int i = 0; i < 5; i++) {
-				members[i] = new Member(); // members[i] = elements라서 for안에서만 객체로서 활동
-				members[i].setName(names[i]); // 정형화중
-				members[i].setUserid(userids[i]);
-				members[i].setPassword(passwords[i]);
-				members[i].setSsn(ssns[i]);
-				members[i].setAddr(addrs[i]);
-				memberService.add(members[i]); // 서버단에 보내줘야 함(write, 서버단에 쓴다, return type 없고 파라미터값이 있고 setter)
+			addrText.setText("서울,서울,서울,부산,부산");
+			String data = String.format("%s/%s/%s/%s/%s", 
+					nameText.getText(),
+					useridText.getText(),
+					passwordText.getText(),
+					ssnText.getText(),
+					addrText.getText());
+			String[] arr = data.split("/");
+			String[] names = arr[0].split(",");
+			String[] userids = arr[1].split(",");
+			String[] passwords = arr[2].split(",");
+			String[] ssns = arr[3].split(",");
+			String[] addrs = arr[4].split(",");
+			Member member = null;
+			for (int i = 0; i < names.length; i++) {
+				member = new Member();
+				member.setName(names[i]);
+				member.setUserid(userids[i]);
+				member.setPassword(passwords[i]);
+				member.setSsn(ssns[i]);
+				member.setAddr(addrs[i]);
+				memberService.add(member);
 			}
-			
 		} else if (e.getSource() == listButton) {
-			JOptionPane.showMessageDialog(this, "CLICK");
-			Member[] members = memberService.getMembers(); // 서버단에서 가져와야 함(read, return type 있고 getter)
-			// 리턴타입 변수 = 갖고오기, 이후에 받아줘야함..
-
+			Member[] members = memberService.list();
 			String result = "";
-			for (int i = 0; i < members.length; i++) {// 한차원 낮춰서 출력해야 함(elements), 차원이 낮은 member에 정보가 있음
-				result += members[i] + "\n";
+			for (int i = 0; i < members.length; i++) {
+				result += String.format("%s \n", members[i]);
 			}
+
 			nameText.setText("");
 			useridText.setText("");
 			passwordText.setText("");
 			ssnText.setText("");
-			addrText.setText(""); // null값, 왜초기화?
+			addrText.setText("");
 			resultText.setText(result);
-			
+
 		} else if (e.getSource() == loginButton) {
-			JOptionPane.showMessageDialog(this, "로그인 \n" + useridText.getText() + "," + passwordText.getText());
+			JOptionPane.showMessageDialog(this, "Login :" + useridText.getText() + "," + passwordText.getText());
 			Member member = new Member();
-			member.setUserid(useridText.getText()); //박스에 담아서 보안상태로 보낸다
+			member.setUserid(useridText.getText());
 			member.setPassword(passwordText.getText());
-			Member membervalue = memberService.login(member);
-			
-			if(membervalue != null) {
-				JOptionPane.showMessageDialog(this, "로그인성공");
-				resultText.setText(membervalue.toString()); //text를 문자열로 바꿔야 할 때 toString으로 바꾼다
+			Member returnMember = memberService.login(member);
+			if (returnMember != null) {
+				resultText.setText(returnMember.toString());
 			} else {
-				JOptionPane.showMessageDialog(this, "로그인실패");
+				resultText.setText("로그인 실패");
 			}
+		} else if (e.getSource() == detailButton) {
+			Member returnMember = memberService.detail(useridText.getText());
+			if (returnMember != null) {
+				resultText.setText(returnMember.toString());
+			} else {
+				resultText.setText("존재하지 않음");
+			}
+		} else if (e.getSource() == nameButton) {
+			Member[] returnMembers = memberService.searchByName(nameText.getText());
+			if (returnMembers != null) {
+				String result = "";
+				for (int i = 0; i < returnMembers.length; i++) {
+					result += String.format("%s" + "\n", returnMembers[i]); // 다시 공부
+				}
+				resultText.setText(result);
+			} else {
+				resultText.setText("존재하지 않음");
+			}
+		} else if (e.getSource() == genderButton) {
+			memberService.searchByGender(ssnText.getText());
+		} else if (e.getSource() == countButton) {
+			resultText.setText(String.valueOf(memberService.count()));
+		} else if (e.getSource() == updateButton) {
+			String userid = useridText.getText();
+			String newPassword = passwordText.getText();
+			Member updateMember = new Member();
+			updateMember.setUserid(userid);
+			updateMember.setPassword(newPassword);
+			memberService.update(updateMember);
+		} else if (e.getSource() == deleteButton) {
+			Member deleteMember = new Member();
+			deleteMember.setUserid(useridText.getText());
+			deleteMember.setPassword(passwordText.getText());
+			memberService.delete(deleteMember);
 		}
 
 	}
