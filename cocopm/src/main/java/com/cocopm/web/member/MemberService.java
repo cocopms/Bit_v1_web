@@ -9,6 +9,8 @@ public interface MemberService {
 	public Member detail(Member member);
 
 	public int count();
+	
+	public boolean login(Member member);
 
 	public void update(Member member);
 
