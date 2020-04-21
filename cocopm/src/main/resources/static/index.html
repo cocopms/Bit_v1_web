@@ -71,52 +71,77 @@ footer {
 </style>
 </head>
 <body>
-	<h2>홈페이지</h2>
 	<header>
-		<h2>Cities</h2>
+		<h2>로그인</h2>
 	</header>
 	<section>
 		<nav>
 			<ul>
-				<li><a id="a-first" href="join.html">Join</a></li>
-				<li><a id="a-second" href="#">Login</a></li>
-				<li><a id="a-third" href="#">hmm...</a></li>
+				<li><a id="a-join" href="member/join.html">Join</a></li> <!--폴더 -->
+				<li><a id="a-login" href="#">Login</a></li>
+				<li><a id="a-cancel" href="#">Cancel</a></li>
+
 			</ul>
 		</nav>
-		<article> <!-- 로그인자리 -->
+		<article>
+			<!-- 로그인자리 -->
 			<h1>로그인</h1>
-				<form action="#">
+			<form action="#">
 				<label>아이디</label><br>
-				<input type="text"><br>
+				<input id="userid" type="text"><br>
 				<label>비밀번호</label><br>
-				<input type="text"><br>				
+				<input id="passwd" type="text"><br>
 				<input id="login-button" type="button" value="로그인">
 				<input id="cancel-button" type="button" value="취소">
-				</form>
+			</form>
 		</article>
 	</section>
 
 	<footer>
 		<p>Footer</p>
 	</footer>
+
+	<!-- 자바스크립트 변수명과 자바의 변수명은 맞추는 게 좋다 -->
+
 	<script type="text/javascript">
-/* 		$('#a-first').click(function() {
-			alert('클릭~')
-		})
-		$('#a-second').click(function() {
-			alert('클릭~')
-		})
-		$('#a-third').click(function() {
-			alert('클릭~')
-		})
-		$('#login-button').click(function(){
-			alert('로그인 완료')
+		/* 		$('#a-join').click(function() {
+		 alert('클릭~')
+		 })
+		 $('#a-login').click(function() {
+		 alert('클릭~')
+		 })
+		 $('#a-cancel').click(function() {
+		 alert('클릭~')
+		 }) */
+		$('#login-button').click(function() {
+			$.ajax({
+				url : '/member/login', //컨트롤러 () 이거 확인
+				type : 'post',		   //컨트롤러 @PostMapping 이거 확인
+				data : JSON.stringify(
+						{userid : $('#userid').val(),
+						passwd : $('#passwd').val()}),
+				dataType : 'json', //지우면 default값으로 데이터 타입이 설정됨, 없애면 안돼 xml의 시대는 갔다고!
+				contentType : 'application/json',
+				
+				//위는 속성값, 아래는 기능값(function)
+				
+				success : function(returnMessage) {
+					if (returnMessage === "SUCCESS") {
+						location.href = 'grade/register.html'
+					} else {
+						alert('정보가 확실하지 않습니다. 다시 로그인해주세요.')
+						location.href = 'index.html'
+					}
+				},
+				error : function() {
+					alert('Networking ERROR')
+					//location.href = "join.html" //다시 회원가입하라
+				}
+			}) //{} 있으니 메소드
 		})
 		$('#cancel-button').click(function() {
 			alert('취소')
 		})
- */	</script>
+	</script>
 </body>
 </html>
-
-

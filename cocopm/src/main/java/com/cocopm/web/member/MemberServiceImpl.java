@@ -1,5 +1,9 @@
 package com.cocopm.web.member;
 
+import org.springframework.stereotype.Service;
+
+//controller은 네트워크에서 new를 해주고 있다
+@Service
 public class MemberServiceImpl implements MemberService {
 	private Member[] members;
 	private int count;
@@ -36,6 +40,19 @@ public class MemberServiceImpl implements MemberService {
 	public int count() {
 		return count;
 	}
+	
+	@Override
+	public boolean login(Member member) {
+		boolean loginVal = false;
+		for(int i=0;i< count;i++) {
+			if(member.getUserid().equals(members[i].getUserid())
+					&&
+				member.getPasswd().equals(members[i].getPasswd())) {
+				loginVal = true;
+			}
+		}
+		return loginVal;
+	}
 
 	@Override
 	public void update(Member member) {
@@ -56,5 +73,4 @@ public class MemberServiceImpl implements MemberService {
 			}
 		}
 	}
-
 }
