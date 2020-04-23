@@ -73,18 +73,18 @@ footer {
 </head>
 <body>
 	<header>
-		<h2>회원가입</h2>
+		<h2>사용자 가입</h2>
 	</header>
 	<section>
 		<nav>
 			<ul>
-				<li><a id="cancel_a">취소</a></li>
+				<li><a id="home_a">Home</a></li>
 			</ul>
 		</nav>
 		<article>
 			<!-- 로그인자리 -->
 			<form action="#">
-				<label>이름</label><br>
+				<label>사용자</label><br>
 				<!-- static -->
 				<input id="name" type="text"><br>
 				<!-- 자연어, value="" 생략된 것 -->
@@ -92,8 +92,8 @@ footer {
 				<label>비밀번호</label><br> <input id="passwd" type="text"><br>
 				<label>주민등록번호</label><br> <input id="ssn" type="text"><br>
 				<label>주소</label><br> <input id="addr" type="text"><br>
-				<input id="join-button" type="button" value="회원가입"> <input
-					id="cancel-button" type="button" value="취소">
+				<input id="join_button" type="button" value="회원가입"> <input
+					id="cancel_button" type="button" value="취소">
 			</form>
 		</article>
 	</section>
@@ -102,42 +102,41 @@ footer {
 		<p>Footer</p>
 	</footer>
 	<script type="text/javascript">
-	$('#cancel_a')
-		.css('cursor', 'pointer')
-		.click(e => {
+	$('#home_a')
+		.css('cursor', 'pointer') /* key/value : 앞애야, 뒤에거 해라 */
+		.click (e => {
 			e.preventDefault()
 			location.href = '../index.html'
-		})
-	
-		$('#join-button').click(e=> {
-			e.preventDefault()
+	})
+	$('#join_button').click (e => {
+		e.preventDefault()
+		$.ajax({
+			url : '/User/join',
+			type : 'post',
+			data : JSON.stringify ({
+				name : $('#name').val(),
+				userid : $('#userid').val(),
+				passwd : $('#passwd').val(),
+				ssn : $('#ssn').val(),
+				addr : $('#addr').val()
+			}),
+			dataType : 'json',
+			contentType : 'application/json',
 			
-			$.ajax({ /* 서버로 간다 */
-				url : '/member/join', /* MemberController과 맞춰줘야 함, 앞의 것을 붙여라 */
-				type : 'post', /* 암호화, url mapping, 추가하는 작업이기에 create-post */
-				data : JSON.stringify({
-					name : $('#name').val(), /* 자바의 member 변수와 맞춰야 한다 */
-					userid : $('#userid').val(), /* 앞의 키값은 ''생략, 뒤의 값만 ''준다' */
-					passwd : $('#passwd').val(),
-					ssn : $('#ssn').val(),
-					addr : $('#addr').val()
-				}), /* ify : ~화하다 - 스트링으로 바꿔서 java로 보내라(핵심) 데이터 맞춰주기 */
-				dataType : 'json',
-				contentType : 'application/json',
-				success : d => { //파라미터, 게터세터만 없을뿐 변수는 존재
-					if (d === "SUCCESS") {
-						location.href = "../index.html"
-					}
-				},
-				error : function(request,status,error){
-			        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-			       }
-			}) /* {}parameter을 java로 보내라 */
+			success : d => {
+				if(d === 'SUCCESS') {
+					alert('환영합니다')
+					location.href = 'signin.html'
+				} else{
+					alert('회원가입 실패. 다시 시도해주세요')
+					location.href = 'signup.html'
+				}
+			},
+			error : (request,status,error) => {
+				"code = "+ request.status + " message = " + request.responseText + " error = " + error
+			}
 		})
-		$('#cancel-button').click(e => {
-			e.preventDefault()
-			alert('취소')
-		})
+	})
 	</script>
 </body>
 </html>
