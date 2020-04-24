@@ -127,6 +127,7 @@ footer {
 				if(d === 'SUCCESS') {
 					alert('환영합니다')
 					location.href = 'signin.html'
+						sessionStorage.setItem('userid', userid); /* windowsessionStorage */
 				} else{
 					alert('회원가입 실패. 다시 시도해주세요')
 					location.href = 'signup.html'

@@ -6,15 +6,11 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 	private Map<String, Object> map;
-	//interface<type : 스트링을 오브젝트화한다> variable
-	//배열이 아닌 """"배열들의 집합""""" = 배열
-	//키값만 보고 루프 없이 찾기 때문에 count,for이 필요없다
-
+	
 	public UserServiceImpl() {
 		map = new HashMap<>();
-				//구현체
 	}
 
 	@Override
@@ -24,23 +20,39 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int count() {
-		return map.size(); //=length
+		return map.size();
 	}
 
 	@Override
 	public User login(User user) {
-		User loginUser = null;
-		if(map.containsKey(user.getUserid())) { //로그인할 때 입력한값
-			User u = detail(user.getUserid()); 
+		User returnUser = null;
+		if(map.containsKey(user.getUserid())) {
+			User u = detail(user.getUserid());
 			if(user.getPasswd().equals(u.getPasswd())) {
-				loginUser = u;
+				return u;
 			}
 		}
-		return loginUser;
+		return returnUser;
 	}
 
 	@Override
-	public User detail(String userid) { //map에 저장된 값
-		return (User) map.get(userid); //object
+	public User detail(String userid) {
+		System.out.println("서비스 detail 들어온 id: "+userid);
+		User t = (User) map.get(userid);
+		System.out.println("===============> "+t);
+		return t;
 	}
+
+	@Override
+	public boolean update(User user) {
+		map.replace(user.getUserid(), user);
+		return true;
+	}
+
+	@Override
+	public boolean remove(String userid) {
+		map.remove(userid);
+		return true;
+	}
+
 }

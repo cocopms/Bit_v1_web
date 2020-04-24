@@ -4,7 +4,10 @@ import java.util.Map;
 
 //상위개념, 일은 서버단에서
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,5 +39,23 @@ public class UserController {
 				returnMap.put("messanger", Messanger.FAIL);
 			}
 			return returnMap;
+		}
+		
+		@PostMapping("/detail/(userid)")
+		public User detail(@PathVariable String userid) {
+//			System.out.println("detail 진입"+userid); //디버깅
+			return service.detail(userid);
+		}
+		
+		@PutMapping("/update")
+		public Messanger update(@RequestBody User user) {
+			System.out.println(user);
+			return (service.update(user)) ? Messanger.SUCCESS : Messanger.FAIL;
+		}
+		
+		@DeleteMapping("/remove/(userid)")
+		public Messanger remove(@PathVariable String userid) {
+			System.out.println(userid);
+			return (service.remove(userid)) ? Messanger.SUCCESS : Messanger.FAIL;
 		}
 }
