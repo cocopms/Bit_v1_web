@@ -1,10 +1,12 @@
 package com.cocopm.web.user;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //상위개념, 일은 서버단에서
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -24,8 +26,9 @@ public class UserController {
 		public Messanger join(@RequestBody User user) {
 			System.out.println(user);
 			int count = service.count();
-			service.add(user);
-			return (count+1 == service.count()) ? Messanger.SUCCESS : Messanger.FAIL;
+			service.savefile(user); //add에서 saverfile로!(온라인에서 db로)
+			//return (count+1 == service.count()) ? Messanger.SUCCESS : Messanger.FAIL;
+			return Messanger.SUCCESS;
 		}	//정상적으로 들어갔는가?
 		
 		@PostMapping("/login")
@@ -39,6 +42,13 @@ public class UserController {
 				returnMap.put("messanger", Messanger.FAIL);
 			}
 			return returnMap;
+		}
+		
+		@GetMapping("/list")
+		public List<User> list() {
+			//초기화 자리에 바로 넣는 것
+			//return service.list();
+			return service.readfile();
 		}
 		
 		@PostMapping("/detail/(userid)")

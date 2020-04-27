@@ -1,8 +1,12 @@
 package com.cocopm.web.user;
 
+import java.util.List;
+
 public interface UserService {
 
 	public void add(User user);
+	
+	public List<User> list();
 
 	public int count();
 
@@ -12,4 +16,8 @@ public interface UserService {
 	public boolean update(User user);
 
 	public boolean remove(String userid);
+	
+	public void savefile(User user);
+	
+	public List<User> readfile();
 }
