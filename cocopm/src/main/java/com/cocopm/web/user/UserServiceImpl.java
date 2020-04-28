@@ -5,24 +5,21 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import javax.swing.JOptionPane;
-
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import com.cocopm.web.util.FileTest;
-
 @Service
 public class UserServiceImpl implements UserService{
 	private Map<String, Object> map; //이젠 끄면 사라지는 맵에 저장하지 않고, 오프라인에 저장하려 한다
+	public final static String FILE_PATH = "C:\\Users\\bit\\spring-workspace\\occamsrazor\\src\\main\\resources\\static\\user\\";
 	
 	public UserServiceImpl() {
 		map = new HashMap<>();
@@ -99,7 +96,7 @@ public class UserServiceImpl implements UserService{
 		List<User> userList = new ArrayList<>();
 		List<String> list = new ArrayList<>();
 		try {
-			File file = new File(FileTest.FILE_PATH + "list.txt"); // io
+			File file = new File(FILE_PATH + "list.txt"); // io
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String message = "";
 			while((message = reader.readLine()) != null) {
@@ -109,8 +106,9 @@ public class UserServiceImpl implements UserService{
 		} catch (Exception e) { // 100프로 이거임
 			System.out.println("에러 발생");
 		}
-		User user = new User();
+		User user = null;
 		for(int i = 0; i<list.size(); ++i) {
+			user = new User();
 			String[] arr = list.get(i).split(",");
 			user.setUserid(arr[0]);
 			user.setPasswd(arr[1]);
@@ -120,5 +118,23 @@ public class UserServiceImpl implements UserService{
 			userList.add(user);
 		}
 		return userList;
+	}
+	
+	@Override
+	public boolean check(String userid) {
+		boolean ok = true;
+		List<User> list = readfile();
+		for(int i =0; i<list.size(); ++i) {
+			if(userid.equals(list.get(i).getUserid())) { //아이디만 골라서 list id와 비교해야함
+				ok = false;
+				break;
+			}
+		}
+// 이전방식
+//		User id = (User) map.get(userid);
+//		if(userid.equals(id.getUserid())) {
+//			ok = true;
+//		}
+		return ok;
 	}
 }

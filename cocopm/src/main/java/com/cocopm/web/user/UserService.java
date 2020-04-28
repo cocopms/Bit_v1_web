@@ -20,4 +20,6 @@ public interface UserService {
 	public void savefile(User user);
 	
 	public List<User> readfile();
+
+	public boolean check(String userid);
 }

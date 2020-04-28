@@ -25,7 +25,6 @@ public class UserController {
 		@PostMapping("/join")
 		public Messanger join(@RequestBody User user) {
 			System.out.println(user);
-			int count = service.count();
 			service.savefile(user); //add에서 saverfile로!(온라인에서 db로)
 			//return (count+1 == service.count()) ? Messanger.SUCCESS : Messanger.FAIL;
 			return Messanger.SUCCESS;
@@ -67,5 +66,10 @@ public class UserController {
 		public Messanger remove(@PathVariable String userid) {
 			System.out.println(userid);
 			return (service.remove(userid)) ? Messanger.SUCCESS : Messanger.FAIL;
+		}
+		
+		@GetMapping("/check/{userid}")
+		public Messanger check(@PathVariable String userid) {
+			return service.check(userid) ? Messanger.SUCCESS : Messanger.FAIL;
 		}
 }
