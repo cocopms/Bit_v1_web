@@ -76,25 +76,26 @@ footer {
 		<h2>점수등록</h2>
 	</header>
 	<section>
-		<nav> <!--side menu-->
+		<nav>
+			<!--side menu-->
 			<ul>
-				<li></li>
-				<li></li>
-				<li></li>
+				<li><a id=""></a></li>
+				<li><a id=""></a></li>
 			</ul>
 		</nav>
 		<article>
 			<!-- 로그인자리 -->
 			<form action="#">
-				<label>아이디</label><br>
-				<input id="userid" type="text"><br>
+				<label>아이디</label><br> <input id="userid" type="text"><br>
 				<label>국어점수</label><br> <input id="korean" type="text"><br>
 				<label>영어점수</label><br> <input id="english" type="text"><br>
 				<label>수학점수</label><br> <input id="math" type="text"><br>
 				<label>자바점수</label><br> <input id="java" type="text"><br>
-				<input id="register-button" type="button" value="점수등록">
-				<input id="showresult-button" type="button" value="평점/평균/학점보기">
+				<input id="register-button" type="button" value="점수입력"> <input
+					id="credit-button" type="button" value="학점보기">
 			</form>
+			<div id="result"></div>
+
 		</article>
 	</section>
 
@@ -102,15 +103,50 @@ footer {
 		<p>Footer</p>
 	</footer>
 	<script type="text/javascript">
-	$.ajax({
-		url : '/grade/register'
-		type : 
-		
-		
-	})
-	
-	
-	
+		$('#register-button').click(e => {
+			e.preventDefault()
+			
+			$.ajax({
+				url : '/grade/register',
+				type : 'post',
+				data : JSON.stringify({
+					userid : $('#userid').val(),
+					korean : $('#korean').val(),
+					english : $('#english').val(),
+					math : $('#math').val(),
+					java : $('#java').val()
+				}),
+				dataType : 'json',
+				contentType : 'application/json',
+				
+				success : d => {
+
+					if(d === "SUCCESS") {
+						alert(d)
+					}
+				},
+				error : (req,sta,err) => { /* 변수명은 아무렇게나 지어도됨 */
+			        alert(req.sta + req.responseText + err); // 실패 시 처리
+			       }
+			})
+		})
+		$('#credit-button').click(e => {
+			e.preventDefault()
+			
+			$.ajax({
+				url : '/grade/report/' + $('#userid').val(),
+				type : 'get',
+				dataType : 'json',
+				contentType : 'application/json',
+				
+				success : d => {
+					$('#result').html('<h3>학점 : '+d+' </h3>')
+					},
+				error : (request,status,error) => {
+				       alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+				    }
+			})
+		})
 	</script>
-	</body>
-	</html>
+</body>
+</html>

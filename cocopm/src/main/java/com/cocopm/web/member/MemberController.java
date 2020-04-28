@@ -22,7 +22,7 @@ public class MemberController {
 	// 서버단을 거치는 이유 : 보안때문에 한절차를 걸쳐서 주는 것(방화벽)
 	// Mapping 외에는 나타나지 않음
 
-	@PostMapping("/join")
+	@PostMapping("/join") //key, value : Mesesanger
 	public Messanger addUrl(@RequestBody Member member) {
 		//Member을 다시 던지면 보안상의 문제가 생김 -> enum으로 던지자
 		int current = service.count(); //add 전 카운트

@@ -1,17 +1,18 @@
 package com.cocopm.web.grade;
 
 import org.springframework.stereotype.Service;
+import com.cocopm.web.util.Credit;
 
 @Service
 public class GradeServiceImpl implements GradeService {
 	private Grade[] grades;
 	private int count;
-	
+
 	public GradeServiceImpl() {
 		grades = new Grade[5];
 		count = 0;
 	}
-	
+
 	@Override
 	public void add(Grade grade) {
 		grade = grades[count];
@@ -19,65 +20,53 @@ public class GradeServiceImpl implements GradeService {
 	}
 
 	@Override
-	public Grade[] list() {
-		return grades;
+	public int count() {
+		return count;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
-	public Grade detail(Grade grade) {
-		Grade detailGrade = null;
-		for(int i = 0; i < count; ++i) {
-			if(grade.getUserid().equals(grades[i].getUserid())) {
-				detailGrade = new Grade();
-				detailGrade = grades[i];
+	public Credit detail(String userid) {
+		Credit credit = null;
+		switch (avg(userid) / 10) {
+		case 10:
+		case 9:
+			credit = credit.A;
+			break;
+		case 8:
+			credit = credit.B;
+			break;
+		case 7:
+			credit = credit.C;
+			break;
+		case 6:
+			credit = credit.D;
+			break;
+		case 5:
+			credit = credit.E;
+			break;
+		default:
+			credit = credit.F;
+			break;
+		}
+		System.out.println(credit);
+		return credit;
+	}
+
+	private int avg(String userid) {
+		return total(userid) / 4;
+	}
+
+	private int total(String userid) {
+		int total = 0;
+		for (int i = 0; i < count; ++i) {
+			if (userid.equals(grades[i].getUserid())) {
+				total = Integer.parseInt(grades[i].getKorean()) + Integer.parseInt(grades[i].getEnglish())
+						+ Integer.parseInt(grades[i].getMath()) + Integer.parseInt(grades[i].getJava()); //Stringify
 			}
 		}
-		return detailGrade;
-	}
-
-	@Override
-	public int total() {
-		Grade grade = new Grade();
-		return Integer.parseInt(grade.getKorean() + grade.getEnglish() + grade.getMath() + grade.getJava());
-	}
-
-	@Override
-	public int average() {
-		return total() / 4;
-	}
-
-	@Override
-	public Grade record() {
-		
-		return null;
-	}
-
-	@Override
-	public Grade[] ranking() {
-		
-		return null;
-	}
-
-	@Override
-	public void update(Grade grade) {
-		for(int i=0; i<count; ++i) {
-			if(grade.getUserid().equals(grades[i].getUserid())) {
-				grades[i].setKorean(grade.getKorean());
-				grades[i].setEnglish(grade.getEnglish());
-				grades[i].setMath(grade.getMath());
-				grades[i].setJava(grade.getJava());
-			}
-		}
-	}
-
-	@Override
-	public void delete(Grade grade) {
-		for(int i=0; i<count; ++i) {
-			if(grade.getUserid().equals(grades[i].getUserid())) {
-				grades[i] = grades[count -1];
-				grades[count -1] = null;
-			}
-		}
+		System.out.println(total);
+		return total;
 	}
 
 }
